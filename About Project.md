@@ -16,18 +16,18 @@ MindCure AI is a mental health support application designed to assist individual
 
 ### Clone the Repository:  
 ```bash
-git clone https://github.com/your-username/MindCure-AI.git
+git clone https://github.com/DeathSquat/MindCure_AI.git
 ```
 
 ### Navigate to the Project Directory:  
 ```bash
-cd MindCure-AI
+cd MindCure_AI
 ```
 
 ### Open in Android Studio:  
 - Launch **Android Studio**  
 - Click on **Open an Existing Project**  
-- Select the **MindCure-AI** directory  
+- Select the **Mind_Cure_AI** directory  
 
 ### Install Dependencies:  
 - Ensure **Java 8+** and **Android SDK** are installed  
@@ -48,16 +48,21 @@ cd MindCure-AI
 ```
 MindCure-AI/
 ├── app/src/main/
-│   ├── java/com/mindcureai/
+│   ├── java/com/eyantra/mind_cure_ai/
 │   │   ├── activities/
-│   │   │   ├── MainActivity.java
-│   │   │   ├── ChatbotActivity.java
+│   │   │   ├── IntroActivity.java
+│   │   │   ├── HomeActivity.java
+│   │   │   ├── ChatActivity.java
+│   │   │   ├── BookingActivity.java
+│   │   │   ├── SosActivity.java
+│   │   │   ├── BreathingExerciseActivity.java
 │   │   │   ├── GamesActivity.java
-│   │   ├── games/
 │   │   │   ├── BubbleGameActivity.java
 │   │   │   ├── MemoryMatchActivity.java
 │   ├── res/
+│   │   ├── anim/
 │   │   ├── layout/
+│   │   ├── font/
 │   │   ├── drawable/
 │   │   ├── values/
 │   ├── AndroidManifest.xml
@@ -74,8 +79,5 @@ MindCure-AI/
 Contributions are welcome! If you find a bug or have a feature request, feel free to open an **issue** or submit a **pull request**.
 
 ## 📬 Contact Me  
-[**LinkedIn**](#) | [**GitHub**](#)  
+[**LinkedIn**](https://www.linkedin.com/in/nishchaync-83b8152b0/) | [**GitHub**](https://github.com/DeathSquat)  
 
----
-
-Let me know if you'd like any modifications! 🚀
