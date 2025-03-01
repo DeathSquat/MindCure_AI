@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"> <!-- Added app namespace -->
+
+    <!-- Poppins Font Variants -->
+    <font android:fontFamily="@font/poppins_regular" app:fontWeight="400" android:fontStyle="normal"/>
+    <font android:fontFamily="@font/poppins_medium" app:fontWeight="500" android:fontStyle="normal"/>
+    <font android:fontFamily="@font/poppins_bold" app:fontWeight="700" android:fontStyle="normal"/>
+
+    <!-- Comfortaa Font Variants -->
+    <font android:fontFamily="@font/comfortaa_regular" app:fontWeight="400" android:fontStyle="normal"/>
+    <font android:fontFamily="@font/comfortaa_medium" app:fontWeight="500" android:fontStyle="normal"/>
+    <font android:fontFamily="@font/comfortaa_bold" app:fontWeight="700" android:fontStyle="normal"/>
+
+</font-family>

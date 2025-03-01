@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="orange">#FF9800</color>
+    <color name="textRelaxing">#1B4F72</color>       <!-- Deep Blue for a Soothing Effect -->
+    <color name="soft_blue">#B3E5FC</color>  <!-- Gentle Soothing Blue -->
+    <color name="gradient_start">#D6EAF8</color>    <!-- Light Blue for a Calm Effect -->
+    <color name="gradient_end">#A9CCE3</color>
+    <color name="buttonPressed">#5499C7</color>      <!-- Slightly Darker Shade for Pressed Button -->
+    <color name="bg_color">#EAF081A4</color>
+    <color name="red">#F44336</color>
+    <color name="soft_blue_dark">#81D4FA</color>
+    <color name="blue_primary">#4CAF50</color>  <!-- Greenish Blue -->
+    <color name="blue_dark">#388E3C</color>    <!-- Darker Shade When Pressed -->
+    <color name="chatBackground">#F5F7FA</color>  <!-- Light pastel blue/gray for a soothing chat background -->
+    <color name="toolbarColor">#6200EA</color>    <!-- Deep purple for a professional and calming look -->
+    <color name="buttonColor">#03DAC5</color>     <!-- Teal accent for a modern touch -->
+    <color name="dark_blue">#004488</color>  <!-- Darker Blue -->
+    <color name="light_blue">#ADD8E6</color>  <!-- Light Blue -->
+    <color name="blue">#007AFF</color>       <!-- iOS Blue Shade -->
+    <color name="toolbar_blue">#4682B4</color>  <!-- Soothing steel blue -->
+    <color name="soft_green">#A8E6CF</color>   <!-- Gentle pastel green -->
+    <color name="soft_red">#FF8A80</color>     <!-- Soft, calming red -->
+</resources>

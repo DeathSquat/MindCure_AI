@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.eyantra.mind_cure_ai">
+    <!-- Add INTERNET permission -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- Ensure touchscreen support (if required) -->
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="true" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="MindCure AI"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Mind_Cure_AI"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".IntroActivity"
+            android:exported="true"> <!-- Required for LAUNCHER activity -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".HomeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ChatActivity"
+            android:exported="true" />
+        <activity
+            android:name=".BreathingExerciseActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SosActivity"
+            android:exported="true" />
+        <activity
+            android:name=".BookingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".GamesActivity"
+            android:exported="true" />
+        <activity
+            android:name=".BubbleGameActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MemoryMatchActivity"
+            android:exported="true" />
+        <activity
+            android:name=".DemoActivity"
+            android:exported="false" />
+    </application>
+
+</manifest>
