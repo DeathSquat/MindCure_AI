@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/option_button_bg"
+    android:padding="20dp"
+    android:layout_margin="16dp">
+
+    <TextView
+        android:id="@+id/doctorName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/doctorTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:alpha="0.9"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:id="@+id/doctorExperience"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:alpha="0.9"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/doctorSpecialization"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:alpha="0.9"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/doctorAvailability"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:alpha="0.9"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/doctorPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/bookButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Call to Book"
+        android:textColor="@color/white"
+        android:background="@drawable/option_button_bg"
+        android:padding="12dp"
+        android:textSize="16sp"/>
+
+</LinearLayout> 
