@@ -2,28 +2,39 @@ package com.eyantra.mind_cure_ai;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import java.util.ArrayList;
-import java.util.List;
+import androidx.core.content.ContextCompat;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ScrollView;
+import android.graphics.Color;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.widget.Toast;
 
 public class ChatActivity extends AppCompatActivity {
-
-    private RecyclerView chatRecyclerView;
-    private ChatAdapter chatAdapter;
-    private List<ChatMessage> chatMessages;
-    private LinearLayout optionsLayout;
+    private LinearLayout chatContainer;
+    private ScrollView scrollView;
+    private LinearLayout optionsContainer;
+    private Handler handler = new Handler(Looper.getMainLooper());
+    private static final long THINKING_DELAY = 2000; // 2 seconds delay
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+
+        // Override default activity transition
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -33,59 +44,25 @@ public class ChatActivity extends AppCompatActivity {
             getSupportActionBar().setTitle("MindCure AI");
         }
 
-        // **Talk to Therapist Button**
+        // Setup Talk to Therapist button
         Button btnTalkToTherapist = findViewById(R.id.btnTalkToTherapist);
-        btnTalkToTherapist.setOnClickListener(view -> {
-            Intent intent = new Intent(ChatActivity.this, BookingActivity.class);
+        btnTalkToTherapist.setOnClickListener(v -> {
+            Intent intent = new Intent(this, BookingActivity.class);
             startActivity(intent);
         });
 
-        chatRecyclerView = findViewById(R.id.chatRecyclerView);
-        optionsLayout = findViewById(R.id.optionsLayout);
+        chatContainer = findViewById(R.id.chatContainer);
+        scrollView = findViewById(R.id.scrollView);
+        optionsContainer = findViewById(R.id.optionsContainer);
 
-        chatMessages = new ArrayList<>();
-        chatAdapter = new ChatAdapter(chatMessages);
-        chatRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        chatRecyclerView.setAdapter(chatAdapter);
-
-        startChat();
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            Intent intent = new Intent(ChatActivity.this, HomeActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-            startActivity(intent);
-            finish();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    private void startChat() {
-        chatMessages.clear();
-        chatAdapter.notifyDataSetChanged();
-
-        addBotMessage("Hey Nishchay! 👋 How was your day?");
+        // Add initial greeting
+        addMessage("Hey Champ! 👋 How was your day?", false);
         showOptions(new String[]{"Had a good moment 😊", "Had a tough time 😞"});
     }
 
-    private void addBotMessage(String message) {
-        chatMessages.add(new ChatMessage(message, true));
-        chatAdapter.notifyItemInserted(chatMessages.size() - 1);
-        scrollToBottom();
-    }
-
-    private void addUserMessage(String message) {
-        chatMessages.add(new ChatMessage(message, false));
-        chatAdapter.notifyItemInserted(chatMessages.size() - 1);
-        scrollToBottom();
-    }
-
     private void showOptions(String[] options) {
-        optionsLayout.removeAllViews();
-        optionsLayout.setPadding(0, 30, 0, 0);
+        optionsContainer.removeAllViews();
+        optionsContainer.setVisibility(View.VISIBLE);
 
         for (String option : options) {
             Button button = new Button(this);
@@ -94,12 +71,7 @@ public class ChatActivity extends AppCompatActivity {
             button.setAllCaps(false);
             button.setPadding(16, 8, 16, 8);
             button.setBackgroundResource(R.drawable.option_button_bg);
-            button.setGravity(Gravity.CENTER);
-
-            button.setOnClickListener(view -> {
-                addUserMessage(option);
-                handleUserResponse(option);
-            });
+            button.setTextColor(Color.WHITE);
 
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT,
@@ -107,55 +79,79 @@ public class ChatActivity extends AppCompatActivity {
             );
             params.setMargins(10, 5, 10, 5);
             button.setLayoutParams(params);
-            optionsLayout.addView(button);
+
+            button.setOnClickListener(v -> {
+                String selectedOption = ((Button) v).getText().toString();
+                addMessage(selectedOption, true);
+                optionsContainer.setVisibility(View.GONE);
+                handleUserInput(selectedOption);
+            });
+
+            optionsContainer.addView(button);
         }
     }
 
-    private void handleUserResponse(String response) {
-        optionsLayout.removeAllViews();
+    private void handleUserInput(String userInput) {
+        // Show thinking indicator
+        addThinkingIndicator();
 
-        switch (response) {
+        // Simulate thinking time
+        handler.postDelayed(() -> {
+            removeThinkingIndicator();
+            String response = getResponse(userInput);
+            addMessage(response, false);
+            showNextOptions(userInput);
+        }, THINKING_DELAY);
+    }
+
+    private void addThinkingIndicator() {
+        TextView thinkingView = new TextView(this);
+        thinkingView.setText("AI is thinking...");
+        thinkingView.setTextColor(Color.GRAY);
+        thinkingView.setPadding(16, 8, 16, 8);
+        thinkingView.setTag("thinking");
+        chatContainer.addView(thinkingView);
+        scrollToBottom();
+    }
+
+    private void removeThinkingIndicator() {
+        for (int i = 0; i < chatContainer.getChildCount(); i++) {
+            View view = chatContainer.getChildAt(i);
+            if ("thinking".equals(view.getTag())) {
+                chatContainer.removeView(view);
+                break;
+            }
+        }
+    }
+
+    private void showNextOptions(String userInput) {
+        String[] nextOptions;
+        switch (userInput) {
             case "Had a good moment 😊":
-                addBotMessage("That's wonderful! What made your day special?");
-                showOptions(new String[]{"Had fun 🎉", "Achieved something 🏆", "Spent time with loved ones ❤️"});
+                nextOptions = new String[]{"Had fun 🎉", "Achieved something 🏆", "Spent time with loved ones ❤️"};
                 break;
-
             case "Had fun 🎉":
-                addBotMessage("That sounds amazing! What kind of fun activity?");
-                showOptions(new String[]{"Played a game 🎮", "Went outdoors 🌳", "Tried something new 🔥"});
+                nextOptions = new String[]{"Played a game 🎮", "Went outdoors 🌳", "Tried something new 🔥"};
                 break;
-
             case "Achieved something 🏆":
-                addBotMessage("That's impressive! What did you accomplish?");
-                showOptions(new String[]{"Completed a task ✅", "Learned something new 📖", "Got appreciated 👏"});
+                nextOptions = new String[]{"Completed a task ✅", "Learned something new 📖", "Got appreciated 👏"};
                 break;
-
             case "Spent time with loved ones ❤️":
-                addBotMessage("That's heartwarming! Who did you spend time with?");
-                showOptions(new String[]{"Family 👨‍👩‍👧‍👦", "Friends 🎊", "Someone special 💖"});
+                nextOptions = new String[]{"Family 👨‍👩‍👧‍👦", "Friends 🎊", "Someone special 💖"};
                 break;
-
             case "Had a tough time 😞":
-                addBotMessage("I'm sorry to hear that. Want to talk about it?");
-                showOptions(new String[]{"Yes, I want to share 💙", "No, not right now."});
+                nextOptions = new String[]{"Yes, I want to share 💙", "No, not right now."};
                 break;
-
             case "Yes, I want to share 💙":
-                addBotMessage("I'm here to listen. What’s on your mind?");
-                showOptions(new String[]{"Felt stressed 😰", "Felt lonely 😔", "Had a bad experience 😞"});
+                nextOptions = new String[]{"Felt stressed 😰", "Felt lonely 😔", "Had a bad experience 😞"};
                 break;
-
             case "Felt stressed 😰":
             case "Felt lonely 😔":
-                addBotMessage("Stress can be tough. Want to try a calming activity?");
-                showOptions(new String[]{"Breathing exercise 🌿", "Play a game 🎮", "Just need a chat 💙"});
+                nextOptions = new String[]{"Breathing exercise 🌿", "Play a game 🎮", "Just need a chat 💙"};
                 break;
-
             case "Had a bad experience 😞":
-                addBotMessage("That must have been hard. Do you want a distraction?");
-                showOptions(new String[]{"Play a game 🎮", "Mindfulness activity 🌿", "Just talk 💙"});
+                nextOptions = new String[]{"Play a game 🎮", "Mindfulness activity 🌿", "Just talk 💙"};
                 break;
-
             case "Just talk 💙":
             case "Still need help 💙":
             case "No, not right now.":
@@ -169,68 +165,149 @@ public class ChatActivity extends AppCompatActivity {
             case "Friends 🎊":
             case "Someone special 💖":
             case "Just need a chat 💙":
-                addBotMessage("Would you like to share more about your day?");
-                showOptions(new String[]{"Yes, I want to share more 💙", "No, let's wrap up."});
+                nextOptions = new String[]{"Yes, I want to share more 💙", "No, let's wrap up."};
                 break;
-
             case "Yes, I want to share more 💙":
-                addBotMessage("I'm here to listen! Tell me what’s on your mind.");
-                showOptions(new String[]{"Had a good moment 😊", "Had a tough time 😞"});
+                nextOptions = new String[]{"Had a good moment 😊", "Had a tough time 😞"};
                 break;
-
             case "No, let's wrap up.":
             case "No, I'm good now.":
-                addBotMessage("Alright! I'm always here for you. Take care! 💙");
-                showOptions(new String[]{"Start a new chat 🔄", "Exit to Home ❌"});
+                nextOptions = new String[]{"Start a new chat 🔄", "Exit to Home ❌"};
                 break;
-
             case "Start a new chat 🔄":
                 restartChat();
-                break;
-
+                return;
             case "Exit to Home ❌":
-                addBotMessage("Alright! Take care and stay strong. See you soon! 😊");
-                optionsLayout.postDelayed(() -> {
-                    Intent intent = new Intent(ChatActivity.this, HomeActivity.class);
+                addMessage("Alright! Take care and stay strong. See you soon! 😊", false);
+                optionsContainer.postDelayed(() -> {
+                    Intent intent = new Intent(this, HomeActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     startActivity(intent);
                     finish();
                 }, 2000);
-                break;
-
+                return;
             case "Breathing exercise 🌿":
-                addBotMessage("Great choice! Redirecting you to the breathing exercise... 🌿");
-                optionsLayout.postDelayed(() -> {
-                    Intent intent = new Intent(ChatActivity.this, BreathingExerciseActivity.class);
+                addMessage("Great choice! Redirecting you to the breathing exercise... 🌿", false);
+                optionsContainer.postDelayed(() -> {
+                    Intent intent = new Intent(this, BreathingExerciseActivity.class);
                     startActivity(intent);
                 }, 2000);
-                break;
-
+                return;
             case "Mindfulness activity 🌿":
-                addBotMessage("Great choice! Redirecting you to the mindfulness activity... 🌿");
-                optionsLayout.postDelayed(() -> {
-                    Intent intent = new Intent(ChatActivity.this, BreathingExerciseActivity.class);
+                addMessage("Great choice! Redirecting you to the mindfulness activity... 🌿", false);
+                optionsContainer.postDelayed(() -> {
+                    Intent intent = new Intent(this, MindfulnessActivity.class);
                     startActivity(intent);
                 }, 2000);
-                break;
-
+                return;
             case "Play a game 🎮":
-                addBotMessage("Great choice! Redirecting you to the game now... 🎮");
-                optionsLayout.postDelayed(() -> {
-                    Intent intent = new Intent(ChatActivity.this, GamesActivity.class);
+                addMessage("Great choice! Redirecting you to the game now... 🎮", false);
+                optionsContainer.postDelayed(() -> {
+                    Intent intent = new Intent(this, GamesActivity.class);
                     startActivity(intent);
                     finish();
                 }, 2000);
-                break;
+                return;
+            default:
+                nextOptions = new String[]{"Start a new chat 🔄", "Exit to Home ❌"};
+        }
+        showOptions(nextOptions);
+    }
+
+    private String getResponse(String userInput) {
+        switch (userInput) {
+            case "Had a good moment 😊":
+                return "That's wonderful! What made your day special?";
+            case "Had fun 🎉":
+                return "That sounds amazing! What kind of fun activity?";
+            case "Achieved something 🏆":
+                return "That's impressive! What did you accomplish?";
+            case "Spent time with loved ones ❤️":
+                return "That's heartwarming! Who did you spend time with?";
+            case "Had a tough time 😞":
+                return "I'm sorry to hear that. Want to talk about it?";
+            case "Yes, I want to share 💙":
+                return "I'm here to listen. What's on your mind?";
+            case "Felt stressed 😰":
+            case "Felt lonely 😔":
+                return "Stress can be tough. Want to try a calming activity?";
+            case "Had a bad experience 😞":
+                return "That must have been hard. Do you want a distraction?";
+            case "Just talk 💙":
+            case "Still need help 💙":
+            case "No, not right now.":
+            case "Got appreciated 👏":
+            case "Learned something new 📖":
+            case "Completed a task ✅":
+            case "Played a game 🎮":
+            case "Went outdoors 🌳":
+            case "Tried something new 🔥":
+            case "Family 👨‍👩‍👧‍👦":
+            case "Friends 🎊":
+            case "Someone special 💖":
+            case "Just need a chat 💙":
+                return "Would you like to share more about your day?";
+            case "Yes, I want to share more 💙":
+                return "I'm here to listen! Tell me what's on your mind.";
+            case "No, let's wrap up.":
+            case "No, I'm good now.":
+                return "Alright! I'm always here for you. Take care! 💙";
+            default:
+                return "I'm here to help. Please let me know what specific information or support you need.";
         }
     }
 
-    private void restartChat() {
-        chatMessages.clear();
-        chatAdapter.notifyDataSetChanged();
-        startChat();
+    private void addMessage(String message, boolean isUser) {
+        TextView messageView = new TextView(this);
+        messageView.setText(message);
+        messageView.setTextSize(18);
+        messageView.setPadding(16, 12, 16, 12);
+        messageView.setBackgroundResource(isUser ? R.drawable.user_message_bg : R.drawable.bot_message_bg);
+        messageView.setTextColor(isUser ? Color.WHITE : Color.BLACK);
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        params.gravity = isUser ? Gravity.END : Gravity.START;
+        params.setMargins(8, 8, 8, 8);
+        messageView.setLayoutParams(params);
+
+        chatContainer.addView(messageView);
+        scrollToBottom();
     }
 
     private void scrollToBottom() {
-        chatRecyclerView.post(() -> chatRecyclerView.smoothScrollToPosition(chatMessages.size() - 1));
+        scrollView.post(() -> scrollView.fullScroll(ScrollView.FOCUS_DOWN));
+    }
+
+    private void restartChat() {
+        chatContainer.removeAllViews();
+        addMessage("Hey Nishchay! 👋 How was your day?", false);
+        showOptions(new String[]{"Had a good moment 😊", "Had a tough time 😞"});
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, HomeActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

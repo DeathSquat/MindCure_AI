@@ -1,80 +1,214 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
-    android:background="#D5E57BA1"> <!-- Light pink background -->
+    android:background="#D5E57BA1">
 
-    <!-- Welcome Text -->
-    <TextView
-        android:id="@+id/deepBreathText"
-        android:layout_width="wrap_content"
+    <!-- Header Section -->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome To Mind Cure AI"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        android:textColor="#FF0000"
-        android:layout_marginTop="50dp" />
+        android:background="#D5E57BA1"
+        android:elevation="4dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="8dp">
 
-    <!-- Breathing Animation Image -->
-    <ImageView
-        android:id="@+id/breathingImage"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:src="@drawable/breathing_image"
-        android:layout_marginTop="20dp" />
+        <TextView
+            android:id="@+id/deepBreathText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Welcome To Mind Cure AI"
+            android:textColor="#FF6B6B"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:shadowColor="#80000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2" />
 
-    <!-- Subtitle -->
-    <TextView
-        android:id="@+id/selfHealthText"
-        android:layout_width="wrap_content"
+        <ImageView
+            android:id="@+id/breathingImage"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="4dp"
+            android:src="@drawable/breathing_image"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/selfHealthText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Your Smart Health Assistant"
+            android:textColor="#4A90E2"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:gravity="center">
+
+        <!-- Primary Options Grid -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <!-- Chat and Games Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="12dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_marginEnd="8dp"
+                    app:cardCornerRadius="55dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="#FF6B6B"
+                    app:strokeWidth="2dp"
+                    app:strokeColor="#FFFFFF">
+
+                    <Button
+                        android:id="@+id/chatButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:text="💬\nLet's Chat"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp"
+                        android:gravity="center"
+                        android:padding="0dp" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_marginStart="8dp"
+                    app:cardCornerRadius="55dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="#4A90E2"
+                    app:strokeWidth="2dp"
+                    app:strokeColor="#FFFFFF">
+
+                    <Button
+                        android:id="@+id/gameButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:text="🎮\nGames"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp"
+                        android:gravity="center"
+                        android:padding="0dp" />
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <!-- SOS and Book Session Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_marginEnd="8dp"
+                    app:cardCornerRadius="55dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="#FF4757"
+                    app:strokeWidth="2dp"
+                    app:strokeColor="#FFFFFF">
+
+                    <Button
+                        android:id="@+id/sosButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:text="🚨\nSOS"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp"
+                        android:gravity="center"
+                        android:padding="0dp" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_marginStart="8dp"
+                    app:cardCornerRadius="55dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="#2ED573"
+                    app:strokeWidth="2dp"
+                    app:strokeColor="#FFFFFF">
+
+                    <Button
+                        android:id="@+id/bookSessionButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:text="👨‍⚕️\nBook Session"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp"
+                        android:gravity="center"
+                        android:padding="0dp" />
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Exercise & Wellness Section (Bottom) -->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Your Smart Health Assistant"
-        android:textColor="#0077CC"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:background="#FFFFFF"
+        android:elevation="8dp">
 
-    <!-- Let's Chat Button -->
-    <Button
-        android:id="@+id/chatButton"
-        android:layout_width="235dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="#FFA500"
-        android:text="🫂 Let's Chat 🫂"
-        android:textColor="#FFFFFF" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wellness Center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#2ED573"
+            android:layout_marginBottom="2dp"
+            android:layout_gravity="center" />
 
-    <!-- Game Button -->
-    <Button
-        android:id="@+id/gameButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="#36C5B9"
-        android:text="🎮 Time for Some Games 🎮"
-        android:textColor="#FFFFFF" />
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="25dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="#2ED573"
+            app:strokeWidth="2dp"
+            app:strokeColor="#FFFFFF">
 
-    <!-- SOS Button -->
-    <Button
-        android:id="@+id/sosButton"
-        android:layout_width="235dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="#D32F2F"
-        android:text="🚨 SOS 🚨"
-        android:textColor="#FFFFFF" />
-
-    <!-- Book Session Button -->
-    <Button
-        android:id="@+id/bookSessionButton"
-        android:layout_width="235dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="#1976D2"
-        android:text="👨‍⚕️ Book Session 👩‍⚕️"
-        android:textColor="#FFFFFF" />
-
+            <Button
+                android:id="@+id/btnExercise"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@null"
+                android:text="🏃‍♂️ Exercise and Wellness 🏃‍♂️"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
 </LinearLayout>

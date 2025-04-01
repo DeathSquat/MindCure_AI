@@ -1,19 +1,19 @@
 package com.eyantra.mind_cure_ai;
 
 public class ChatMessage {
-    private final String message;
-    private final boolean isBotMessage; // True for bot, False for user
+    private String text;
+    private boolean isUserMessage;
 
-    public ChatMessage(String message, boolean isBotMessage) {
-        this.message = message;
-        this.isBotMessage = isBotMessage;
+    public ChatMessage(String text, boolean isUserMessage) {
+        this.text = text;
+        this.isUserMessage = isUserMessage;
     }
 
-    public String getMessage() {
-        return message;
+    public String getText() {
+        return text;
     }
 
-    public boolean isBot() {
-        return isBotMessage;
+    public boolean isUserMessage() {
+        return isUserMessage;
     }
 }

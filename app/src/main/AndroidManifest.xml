@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.eyantra.mind_cure_ai">
     <!-- Add INTERNET permission -->
-    <uses-permission android:name="android.permission.INTERNET" /> <!-- Ensure touchscreen support (if required) -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- Ensure touchscreen support (if required) -->
     <uses-feature
         android:name="android.hardware.touchscreen"
         android:required="true" />
+    <uses-feature android:name="android.hardware.camera" />
 
     <application
         android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="MindCure AI"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Mind_Cure_AI"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
         <activity
             android:name=".IntroActivity"
             android:exported="true"> <!-- Required for LAUNCHER activity -->
@@ -49,8 +55,42 @@
             android:name=".MemoryMatchActivity"
             android:exported="true" />
         <activity
+            android:name=".EmotionDetectionActivity"
+            android:exported="true" />
+        <activity
             android:name=".DemoActivity"
             android:exported="false" />
+        <activity
+            android:name=".TipsActivity"
+            android:exported="true"
+            android:label="Mental Health Tips" />
+        <activity
+            android:name=".WellnessCenterActivity"
+            android:exported="true" />
+        <activity
+            android:name=".LearningActivity"
+            android:exported="true" />
+        <activity
+            android:name=".GoalSettingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MindfulnessActivity"
+            android:exported="true" />
+        <activity
+            android:name=".JournalActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ExerciseGuideActivity"
+            android:exported="true" />
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>

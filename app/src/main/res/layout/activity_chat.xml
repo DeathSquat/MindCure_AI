@@ -1,54 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/chat_background_gradient">
+    android:orientation="vertical"
+    android:background="#D5E57BA1">
 
-    <!-- Toolbar -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        android:elevation="4dp" />
-
-    <!-- Talk to Therapist Button -->
-    <Button
-        android:id="@+id/btnTalkToTherapist"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="#0077CC"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/white"
         android:elevation="4dp"
-        android:padding="12dp"
-        android:text="Talk to Therapist"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp" />
+        app:titleTextColor="#333333"
+        app:contentInsetStartWithNavigation="0dp"
+        app:navigationIcon="@drawable/ic_arrow_back">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
-    <!-- Chat RecyclerView -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/chatRecyclerView"
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="MindCure AI"
+                android:textSize="20sp"
+                android:textColor="#333333"
+                android:gravity="center"/>
+
+            <Button
+                android:id="@+id/btnTalkToTherapist"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="Talk to Therapist"
+                android:textSize="14sp"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/option_button_bg"
+                android:padding="8dp"
+                android:layout_marginEnd="16dp"/>
+
+        </LinearLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_below="@id/btnTalkToTherapist"
-        android:layout_above="@id/optionsLayout"
-        android:padding="10dp" />
+        android:layout_weight="1"
+        android:background="#FFFFFF"
+        android:contentDescription="Chat messages"
+        android:elevation="8dp">
 
-    <!-- Options Layout (Buttons) -->
+        <LinearLayout
+            android:id="@+id/chatContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:contentDescription="Chat container"
+            android:clipToPadding="false" />
+
+    </ScrollView>
+
     <LinearLayout
-        android:id="@+id/optionsLayout"
+        android:id="@+id/optionsContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:orientation="vertical"
-        android:padding="10dp"
-        android:background="#DFF6FF"
-        android:elevation="6dp">
-    </LinearLayout>
+        android:padding="16dp"
+        android:background="#FFFFFF"
+        android:contentDescription="Options container"
+        android:visibility="visible" />
 
-</RelativeLayout>
+</LinearLayout>
