@@ -54,6 +54,7 @@ cd MindCure_AI
 ---
 
 ### Project Structure
+```text
 MindCure_AI/
 ├── app/
 │   └── src/
@@ -89,6 +90,7 @@ MindCure_AI/
 │           └── AndroidManifest.xml
 ├── README.md
 └── build.gradle
+```
 
 ---
 
