@@ -22,3 +22,9 @@
 ### 1. Clone the Repository  
 ```bash
 git clone https://github.com/DeathSquat/MindCure_AI.git
+```
+
+### 2. Navigate to the Project Directory 
+```bash
+cd MindCure_AI
+```
