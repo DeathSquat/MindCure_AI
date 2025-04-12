@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.eyantra.mind_cure_ai">
+    xmlns:tools="http://schemas.android.com/tools">
     <!-- Add INTERNET permission -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" /> <!-- Ensure touchscreen support (if required) -->
@@ -11,6 +10,7 @@
     <uses-feature android:name="android.hardware.camera" />
 
     <application
+        android:name=".MindCureApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -23,19 +23,24 @@
         tools:targetApi="31">
         <activity
             android:name=".IntroActivity"
-            android:exported="true"> <!-- Required for LAUNCHER activity -->
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SignupActivity"
+            android:exported="false" />
+        <activity
             android:name=".HomeActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".ChatActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".BreathingExerciseActivity"
             android:exported="true" />
@@ -44,7 +49,7 @@
             android:exported="true" />
         <activity
             android:name=".BookingActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".GamesActivity"
             android:exported="true" />
@@ -66,7 +71,7 @@
             android:label="Mental Health Tips" />
         <activity
             android:name=".WellnessCenterActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".LearningActivity"
             android:exported="true" />

@@ -1,29 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary_color">#4CAF50</color>
-    <color name="background_color">#D5E57BA1</color>
-    <color name="soft_blue">#E3F2FD</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="darker_gray">#757575</color>
-    <color name="orange">#FF9800</color>
-    <color name="textRelaxing">#1B4F72</color>       <!-- Deep Blue for a Soothing Effect -->
-    <color name="gradient_start">#D6EAF8</color>    <!-- Light Blue for a Calm Effect -->
-    <color name="gradient_end">#A9CCE3</color>
-    <color name="buttonPressed">#5499C7</color>      <!-- Slightly Darker Shade for Pressed Button -->
-    <color name="bg_color">#EAF081A4</color>
+    <!-- Primary Colors -->
+    <color name="primary">#E91E63</color>
+    <color name="primary_dark">#C2185B</color>
+    <color name="primary_light">#F8BBD0</color>
+    
+    <!-- Pink Colors -->
+    <color name="primary_pink">#E91E63</color>
+    <color name="primary_pink_dark">#C2185B</color>
+    <color name="accent_pink">#FF4081</color>
+    <color name="soothing_pink">#FCE4EC</color>
+    <color name="soothing_pink_dark">#F8BBD0</color>
+    
+    <!-- Blue Colors -->
+    <color name="blue">#2196F3</color>
+    <color name="blue_primary">#2196F3</color>
+    <color name="blue_dark">#1976D2</color>
+    <color name="soft_blue">#BBDEFB</color>
+    <color name="light_blue">#E3F2FD</color>
+    <color name="toolbar_blue">#1976D2</color>
+    
+    <!-- Secondary Colors -->
+    <color name="secondary">#2196F3</color>
+    <color name="secondary_dark">#1976D2</color>
+    <color name="secondary_light">#BBDEFB</color>
+    
+    <!-- Background Colors -->
+    <color name="background_light">#FFFFFF</color>
+    <color name="background_dark">#121212</color>
+    <color name="surface_light">#F5F5F5</color>
+    <color name="surface_dark">#1E1E1E</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="background_color">#FCE4EC</color>
+    <color name="bg_color">#FCE4EC</color>
+    
+    <!-- Text Colors -->
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="text_hint">#BDBDBD</color>
+    <color name="text_white">#FFFFFF</color>
+    <color name="textRelaxing">#E91E63</color>
+    <color name="gray">#9E9E9E</color>
+    
+    <!-- Accent Colors -->
+    <color name="accent">#FFC107</color>
+    <color name="accent_dark">#FFA000</color>
+    <color name="accent_light">#FFECB3</color>
+    
+    <!-- Status Colors -->
+    <color name="success">#4CAF50</color>
+    <color name="warning">#FFC107</color>
+    <color name="error">#F44336</color>
+    <color name="info">#2196F3</color>
     <color name="red">#F44336</color>
-    <color name="soft_blue_dark">#81D4FA</color>
-    <color name="blue_primary">#4CAF50</color>  <!-- Greenish Blue -->
-    <color name="blue_dark">#388E3C</color>    <!-- Darker Shade When Pressed -->
-    <color name="chatBackground">#F5F7FA</color>  <!-- Light pastel blue/gray for a soothing chat background -->
-    <color name="toolbarColor">#6200EA</color>    <!-- Deep purple for a professional and calming look -->
-    <color name="buttonColor">#03DAC5</color>     <!-- Teal accent for a modern touch -->
-    <color name="dark_blue">#004488</color>  <!-- Darker Blue -->
-    <color name="light_blue">#ADD8E6</color>  <!-- Light Blue -->
-    <color name="blue">#007AFF</color>       <!-- iOS Blue Shade -->
-    <color name="toolbar_blue">#4682B4</color>  <!-- Soothing steel blue -->
-    <color name="soft_green">#A8E6CF</color>   <!-- Gentle pastel green -->
-    <color name="soft_red">#FF8A80</color>     <!-- Soft, calming red -->
-    <color name="gray">#757575</color>         <!-- Standard gray for text -->
+    <color name="soft_red">#FFCDD2</color>
+    <color name="soft_green">#C8E6C9</color>
+    
+    <!-- Button Colors -->
+    <color name="button_primary">#E91E63</color>
+    <color name="button_secondary">#2196F3</color>
+    <color name="button_disabled">#BDBDBD</color>
+    <color name="buttonPressed">#C2185B</color>
+    
+    <!-- Gradient Colors -->
+    <color name="gradient_start">#E91E63</color>
+    <color name="gradient_end">#FF4081</color>
+    
+    <!-- Chat Colors -->
+    <color name="chat_bubble_user">#E3F2FD</color>
+    <color name="chat_bubble_bot">#FCE4EC</color>
+    <color name="chat_text_user">#1976D2</color>
+    <color name="chat_text_bot">#C2185B</color>
+    
+    <!-- Card Colors -->
+    <color name="card_background">#FFFFFF</color>
+    <color name="card_elevation">#E0E0E0</color>
+    
+    <!-- Divider Colors -->
+    <color name="divider">#E0E0E0</color>
+    <color name="divider_dark">#424242</color>
+    
+    <!-- Green Colors -->
+    <color name="primary_green">#4CAF50</color>
+    <color name="primary_green_light">#E8F5E9</color>
+    <color name="primary_green_dark">#388E3C</color>
+    <color name="accent_green">#81C784</color>
 </resources>

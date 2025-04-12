@@ -4,15 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#D5E57BA1">
+    android:background="@color/background_light">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@android:color/white"
+        android:background="@color/primary_pink"
         android:elevation="4dp"
-        app:titleTextColor="#333333"
         app:contentInsetStartWithNavigation="0dp"
         app:navigationIcon="@drawable/ic_arrow_back">
 
@@ -28,19 +27,19 @@
                 android:layout_weight="1"
                 android:text="MindCure AI"
                 android:textSize="20sp"
-                android:textColor="#333333"
+                android:textColor="@color/white"
                 android:gravity="center"/>
 
             <Button
                 android:id="@+id/btnTalkToTherapist"
-                android:layout_width="wrap_content"
-                android:layout_height="36dp"
-                android:text="Talk to Therapist"
-                android:textSize="14sp"
-                android:textColor="#FFFFFF"
-                android:background="@drawable/option_button_bg"
+                android:layout_width="187dp"
+                android:layout_height="56dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/rounded_button_green"
                 android:padding="8dp"
-                android:layout_marginEnd="16dp"/>
+                android:text="Talk to Therapist"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
 
         </LinearLayout>
 
@@ -51,20 +50,24 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#FFFFFF"
-        android:contentDescription="Chat messages"
-        android:elevation="8dp">
+        android:fillViewport="true">
 
         <LinearLayout
             android:id="@+id/chatContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp"
-            android:contentDescription="Chat container"
-            android:clipToPadding="false" />
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp" />
 
     </ScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider" />
 
     <LinearLayout
         android:id="@+id/optionsContainer"
@@ -72,8 +75,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp"
-        android:background="#FFFFFF"
-        android:contentDescription="Options container"
-        android:visibility="visible" />
+        android:background="@color/white"
+        android:elevation="8dp" />
 
 </LinearLayout>

@@ -6,26 +6,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.card.MaterialCardView;
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.Color;
+import android.view.Gravity;
 
 public class TipsActivity extends AppCompatActivity {
-    private RecyclerView tipsRecyclerView;
-    private ScrollView scrollView;
+    private Toolbar toolbar;
     private LinearLayout tipsContainer;
-    private String selectedCategory;
-    private List<Tip> tips;
-    private TipAdapter tipAdapter;
-    private boolean isShowingTips = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,77 +26,26 @@ public class TipsActivity extends AppCompatActivity {
         // Override default activity transition
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        // Initialize views
+        toolbar = findViewById(R.id.toolbar);
+        tipsContainer = findViewById(R.id.tipsContainer);
+
+        // Set up toolbar
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back);
-            getSupportActionBar().setTitle("Wellness Tips");
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
 
-        // Initialize views
-        tipsRecyclerView = findViewById(R.id.tipsRecyclerView);
-        scrollView = findViewById(R.id.scrollView);
-        tipsContainer = findViewById(R.id.tipsContainer);
-
-        // Initialize tips list and adapter
-        tips = new ArrayList<>();
-        tipAdapter = new TipAdapter(tips);
-        tipsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        tipsRecyclerView.setAdapter(tipAdapter);
+        // Set up back button with animation
+        toolbar.setNavigationOnClickListener(v -> {
+            v.startAnimation(AnimationUtils.loadAnimation(this, R.anim.button_scale));
+            onBackPressed();
+        });
 
         // Setup tips
         setupTips();
         animateViews();
-    }
-
-    private void loadTips(String category) {
-        tips.clear();
-        switch (category) {
-            case "Stress Management":
-                tips.add(new Tip("Stress Management", "Take deep breaths when feeling overwhelmed"));
-                tips.add(new Tip("Stress Management", "Practice time management to reduce stress"));
-                tips.add(new Tip("Stress Management", "Exercise regularly to release stress"));
-                tips.add(new Tip("Stress Management", "Take regular breaks during work"));
-                tips.add(new Tip("Stress Management", "Talk to someone you trust"));
-                break;
-            case "Anxiety":
-                tips.add(new Tip("Anxiety", "Practice grounding techniques"));
-                tips.add(new Tip("Anxiety", "Challenge negative thoughts"));
-                tips.add(new Tip("Anxiety", "Maintain a regular routine"));
-                tips.add(new Tip("Anxiety", "Limit caffeine and alcohol"));
-                tips.add(new Tip("Anxiety", "Practice progressive muscle relaxation"));
-                break;
-            case "Sleep":
-                tips.add(new Tip("Sleep", "Maintain a consistent sleep schedule"));
-                tips.add(new Tip("Sleep", "Create a relaxing bedtime routine"));
-                tips.add(new Tip("Sleep", "Keep your bedroom cool and dark"));
-                tips.add(new Tip("Sleep", "Avoid screens before bedtime"));
-                tips.add(new Tip("Sleep", "Exercise during the day, not before bed"));
-                break;
-            case "Self-Care":
-                tips.add(new Tip("Self-Care", "Take regular breaks for yourself"));
-                tips.add(new Tip("Self-Care", "Practice self-compassion"));
-                tips.add(new Tip("Self-Care", "Stay hydrated and eat well"));
-                tips.add(new Tip("Self-Care", "Engage in activities you enjoy"));
-                tips.add(new Tip("Self-Care", "Set healthy boundaries"));
-                break;
-            case "Mindfulness":
-                tips.add(new Tip("Mindfulness", "Practice mindful breathing daily"));
-                tips.add(new Tip("Mindfulness", "Stay present in the moment"));
-                tips.add(new Tip("Mindfulness", "Practice mindful eating"));
-                tips.add(new Tip("Mindfulness", "Take mindful walks"));
-                tips.add(new Tip("Mindfulness", "Practice gratitude daily"));
-                break;
-        }
-        tipAdapter.notifyDataSetChanged();
-        showTips();
-    }
-
-    private void showTips() {
-        scrollView.setVisibility(View.GONE);
-        tipsRecyclerView.setVisibility(View.VISIBLE);
-        isShowingTips = true;
     }
 
     private void setupTips() {
@@ -200,7 +140,7 @@ public class TipsActivity extends AppCompatActivity {
         titleView.setText(title);
         titleView.setTextSize(20);
         titleView.setTypeface(null, android.graphics.Typeface.BOLD);
-        titleView.setTextColor(getResources().getColor(android.R.color.black));
+        titleView.setTextColor(getResources().getColor(R.color.primary_green));
         titleView.setLayoutParams(new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
@@ -212,6 +152,7 @@ public class TipsActivity extends AppCompatActivity {
             TextView tipView = new TextView(this);
             tipView.setText("• " + tip);
             tipView.setTextSize(16);
+            tipView.setTextColor(getResources().getColor(R.color.text_primary));
             tipView.setLayoutParams(new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT
@@ -252,18 +193,10 @@ public class TipsActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        if (isShowingTips) {
-            // First back press: return to options
-            tipsRecyclerView.setVisibility(View.GONE);
-            scrollView.setVisibility(View.VISIBLE);
-            isShowingTips = false;
-        } else {
-            // Second back press: return to home
-            Intent intent = new Intent(this, HomeActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-            startActivity(intent);
-            finish();
-        }
+        Intent intent = new Intent(this, HomeActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(intent);
+        finish();
     }
 
     @Override

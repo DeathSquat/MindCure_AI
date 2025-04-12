@@ -4,9 +4,11 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Rect;
+import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
+
+import androidx.annotation.Nullable;
 
 import com.google.mlkit.vision.face.Face;
 import com.google.mlkit.vision.face.FaceLandmark;
@@ -16,18 +18,36 @@ public class FaceGuideOverlay extends View {
     private boolean isProcessing;
     private int previewWidth;
     private int previewHeight;
-    private final Paint facePaint;
-    private final Paint landmarkPaint;
-    private final Paint textPaint;
+    private Paint facePaint;
+    private Paint landmarkPaint;
+    private Paint textPaint;
     private String currentEmotion = "";
+    private Paint guidePaint;
+    private RectF guideRect;
+    private RectF faceRect;
+    private boolean showGuide = true;
 
-    public FaceGuideOverlay(Context context, AttributeSet attrs) {
+    public FaceGuideOverlay(Context context) {
+        super(context);
+        init();
+    }
+
+    public FaceGuideOverlay(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        init();
+    }
 
+    public FaceGuideOverlay(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        init();
+    }
+
+    private void init() {
         facePaint = new Paint();
-        facePaint.setColor(Color.TRANSPARENT); // Remove the green circle
+        facePaint.setColor(Color.GREEN);
         facePaint.setStyle(Paint.Style.STROKE);
-        facePaint.setStrokeWidth(4f);
+        facePaint.setStrokeWidth(3f);
+        facePaint.setAlpha(200);
 
         landmarkPaint = new Paint();
         landmarkPaint.setColor(Color.WHITE);
@@ -38,6 +58,25 @@ public class FaceGuideOverlay extends View {
         textPaint.setColor(Color.WHITE);
         textPaint.setTextSize(60f);
         textPaint.setTextAlign(Paint.Align.CENTER);
+
+        guidePaint = new Paint();
+        guidePaint.setColor(Color.WHITE);
+        guidePaint.setStyle(Paint.Style.STROKE);
+        guidePaint.setStrokeWidth(5f);
+        guidePaint.setAlpha(128);
+
+        guideRect = new RectF();
+        faceRect = new RectF();
+    }
+
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        // Center the guide rectangle
+        float size = Math.min(w, h) * 0.6f;
+        float left = (w - size) / 2;
+        float top = (h - size) / 2;
+        guideRect.set(left, top, left + size, top + size);
     }
 
     @Override
@@ -63,6 +102,14 @@ public class FaceGuideOverlay extends View {
             float textY = getHeight() - 100f;
             canvas.drawText(currentEmotion, textX, textY, textPaint);
         }
+
+        if (showGuide) {
+            canvas.drawOval(guideRect, guidePaint);
+        }
+        
+        if (faceRect != null) {
+            canvas.drawRect(faceRect, facePaint);
+        }
     }
 
     private void drawFaceLandmark(Canvas canvas, FaceLandmark landmark, float scale) {
@@ -82,9 +129,14 @@ public class FaceGuideOverlay extends View {
         previewHeight = height;
     }
 
-    public void updateFace(Face face, boolean isProcessing) {
+    public void updateFace(Face face, boolean showGuide) {
         this.face = face;
-        this.isProcessing = isProcessing;
+        this.showGuide = showGuide;
+        if (face != null) {
+            faceRect.set(face.getBoundingBox());
+        } else {
+            faceRect.setEmpty();
+        }
         invalidate();
     }
 
