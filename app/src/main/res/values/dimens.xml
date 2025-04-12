@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Default screen margins -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    
+    <!-- Chat message dimensions -->
+    <dimen name="message_padding">16dp</dimen>
+    <dimen name="message_margin">8dp</dimen>
+    <dimen name="message_text_size">16sp</dimen>
+    
+    <!-- Option dimensions -->
+    <dimen name="option_padding">16dp</dimen>
+    <dimen name="option_margin">8dp</dimen>
+    <dimen name="option_text_size">16sp</dimen>
+    
+    <!-- Animation durations -->
+    <dimen name="anim_duration_short">200</dimen>
+    <dimen name="anim_duration_medium">500</dimen>
+    <dimen name="anim_duration_long">1000</dimen>
+    
+    <!-- Elevation values -->
+    <dimen name="elevation_low">2dp</dimen>
+    <dimen name="elevation_medium">4dp</dimen>
+    <dimen name="elevation_high">8dp</dimen>
+    
+    <!-- Corner radius -->
+    <dimen name="corner_radius_small">4dp</dimen>
+    <dimen name="corner_radius_medium">8dp</dimen>
+    <dimen name="corner_radius_large">16dp</dimen>
+</resources> 

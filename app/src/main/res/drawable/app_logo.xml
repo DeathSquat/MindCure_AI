@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+
+    <!-- Background circle -->
+    <path
+        android:fillColor="#4CAF50"
+        android:pathData="M60,60m-60,0a60,60 0,1 1,120 0a60,60 0,1 1,-120 0" />
+
+    <!-- Brain icon -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M60,30C43.431,30 30,43.431 30,60C30,76.569 43.431,90 60,90C76.569,90 90,76.569 90,60C90,43.431 76.569,30 60,30ZM60,85C45.536,85 35,74.464 35,60C35,45.536 45.536,35 60,35C74.464,35 85,45.536 85,60C85,74.464 74.464,85 60,85Z" />
+
+    <!-- Brain details -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M60,40C48.954,40 40,48.954 40,60C40,71.046 48.954,80 60,80C71.046,80 80,71.046 80,60C80,48.954 71.046,40 60,40ZM60,75C51.716,75 45,68.284 45,60C45,51.716 51.716,45 60,45C68.284,45 75,51.716 75,60C75,68.284 68.284,75 60,75Z" />
+
+    <!-- Heart symbol -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M60,50C57.239,50 55,52.239 55,55C55,57.761 57.239,60 60,60C62.761,60 65,57.761 65,55C65,52.239 62.761,50 60,50Z" />
+</vector> 

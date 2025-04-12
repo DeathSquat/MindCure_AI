@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="100dp"
+    android:height="100dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+
+    <!-- Background -->
+    <path
+        android:fillColor="#FFE4B5"
+        android:pathData="M0,0h100v100h-100z"/>
+
+    <!-- Face -->
+    <path
+        android:fillColor="#FFD6B3"
+        android:pathData="M50,25c-13.8,0 -25,11.2 -25,25s11.2,25 25,25s25,-11.2 25,-25s-11.2,-25 -25,-25z"/>
+
+    <!-- Hair (Pigtails) -->
+    <path
+        android:fillColor="#D2691E"
+        android:pathData="M25,40c0,-10 10,-15 25,-15s25,5 25,15c0,5 -5,10 -10,10c-2.5,0 -5,-2.5 -5,-5s2.5,-5 5,-5c2.5,0 5,2.5 5,5"/>
+    <path
+        android:fillColor="#D2691E"
+        android:pathData="M20,45c5,-5 10,-5 15,0s0,10 -5,15s-10,5 -15,0s-0,-10 5,-15"/>
+    <path
+        android:fillColor="#D2691E"
+        android:pathData="M80,45c-5,-5 -10,-5 -15,0s0,10 5,15s10,5 15,0s0,-10 -5,-15"/>
+
+    <!-- Glasses -->
+    <path
+        android:fillColor="#000000"
+        android:strokeWidth="2"
+        android:pathData="M35,45c0,5 5,10 10,10s10,-5 10,-10s-5,-10 -10,-10s-10,5 -10,10M55,45c0,5 5,10 10,10s10,-5 10,-10s-5,-10 -10,-10s-10,5 -10,10"/>
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M40,45m-8,0a8,8 0,1 1,16 0a8,8 0,1 1,-16 0"/>
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M60,45m-8,0a8,8 0,1 1,16 0a8,8 0,1 1,-16 0"/>
+
+    <!-- Eyes behind glasses -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M40,45m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0"/>
+    <path
+        android:fillColor="#000000"
+        android:pathData="M60,45m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0"/>
+
+    <!-- Mouth (Playful with tongue) -->
+    <path
+        android:fillColor="#FF6B6B"
+        android:pathData="M50,60c-5,0 -10,4 -10,8c0,4 5,8 10,8s10,-4 10,-8c0,-4 -5,-8 -10,-8z"/>
+    <path
+        android:fillColor="#FF4444"
+        android:pathData="M45,65c2.5,0 5,2 5,5s-2.5,5 -5,5s-5,-2 -5,-5s2.5,-5 5,-5"/>
+
+    <!-- Shirt -->
+    <path
+        android:fillColor="#FF7F50"
+        android:pathData="M30,85v15h40v-15c-5,5 -15,8 -20,8s-15,-3 -20,-8z"/>
+</vector> 

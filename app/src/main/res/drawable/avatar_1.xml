@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="100dp"
+    android:height="100dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+
+    <!-- Background -->
+    <path
+        android:fillColor="#B8D8BA"
+        android:pathData="M0,0h100v100h-100z"/>
+
+    <!-- Face -->
+    <path
+        android:fillColor="#FFD6B3"
+        android:pathData="M50,25c-13.8,0 -25,11.2 -25,25s11.2,25 25,25s25,-11.2 25,-25s-11.2,-25 -25,-25z"/>
+
+    <!-- Hair -->
+    <path
+        android:fillColor="#8B4513"
+        android:pathData="M50,20c-8,0 -15,3 -20,8c-2,5 -3,10 -3,15c0,2 0.3,4 0.8,6c1.5,-12 11.5,-21 22.2,-21c12,0 22,9 22,21c0.5,-2 0.8,-4 0.8,-6c0,-5 -1,-10 -3,-15c-5,-5 -12,-8 -20,-8z"/>
+
+    <!-- Eyes -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M40,45m-8,0a8,8 0,1 1,16 0a8,8 0,1 1,-16 0"/>
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M60,45m-8,0a8,8 0,1 1,16 0a8,8 0,1 1,-16 0"/>
+    <path
+        android:fillColor="#000000"
+        android:pathData="M40,45m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0"/>
+    <path
+        android:fillColor="#000000"
+        android:pathData="M60,45m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0"/>
+
+    <!-- Mouth -->
+    <path
+        android:fillColor="#FF6B6B"
+        android:pathData="M50,60c-5,0 -10,4 -10,8c0,4 5,8 10,8s10,-4 10,-8c0,-4 -5,-8 -10,-8z"/>
+
+    <!-- Shirt -->
+    <path
+        android:fillColor="#4CAF50"
+        android:pathData="M30,85v15h40v-15c-5,5 -15,8 -20,8s-15,-3 -20,-8z"/>
+</vector> 
