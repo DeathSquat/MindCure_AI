@@ -1,74 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="@drawable/option_button_bg"
-    android:padding="20dp"
-    android:layout_margin="16dp">
+    android:layout_marginBottom="16dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
 
-    <TextView
-        android:id="@+id/doctorName"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:layout_marginBottom="8dp"/>
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <TextView
-        android:id="@+id/doctorTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textColor="@color/white"
-        android:alpha="0.9"
-        android:layout_marginBottom="16dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
 
-    <TextView
-        android:id="@+id/doctorExperience"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textColor="@color/white"
-        android:alpha="0.9"
-        android:layout_marginBottom="8dp"/>
+            <ImageView
+                android:id="@+id/doctorImage"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/doctor1"
+                android:background="@drawable/circle_background"/>
 
-    <TextView
-        android:id="@+id/doctorSpecialization"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textColor="@color/white"
-        android:alpha="0.9"
-        android:layout_marginBottom="8dp"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="16dp">
 
-    <TextView
-        android:id="@+id/doctorAvailability"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textColor="@color/white"
-        android:alpha="0.9"
-        android:layout_marginBottom="8dp"/>
+                <TextView
+                    android:id="@+id/doctorName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Dr. John Doe"
+                    android:textSize="18sp"
+                    android:textColor="@color/primary_green"
+                    android:textStyle="bold"/>
 
-    <TextView
-        android:id="@+id/doctorPrice"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:layout_marginBottom="16dp"/>
+                <TextView
+                    android:id="@+id/doctorTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Clinical Psychologist"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_secondary"/>
 
-    <Button
-        android:id="@+id/bookButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Call to Book"
-        android:textColor="@color/white"
-        android:background="@drawable/option_button_bg"
-        android:padding="12dp"
-        android:textSize="16sp"/>
+                <TextView
+                    android:id="@+id/doctorRating"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="⭐ 4.8"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginTop="4dp"/>
 
-</LinearLayout> 
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/doctorExperience"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Experience: 10+ years"
+            android:textSize="14sp"
+            android:textColor="@color/text_primary"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/doctorSpecialization"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Specialization: Anxiety, Depression"
+            android:textSize="14sp"
+            android:textColor="@color/text_primary"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/doctorAvailability"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Available: Mon-Fri, 9 AM - 5 PM"
+            android:textSize="14sp"
+            android:textColor="@color/text_primary"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/doctorPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="₹1000/session"
+            android:textSize="14sp"
+            android:textColor="@color/text_primary"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/bookButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Book Session"
+            android:textColor="@color/white"
+            android:background="@drawable/rounded_button_green"
+            android:padding="8dp"/>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView> 

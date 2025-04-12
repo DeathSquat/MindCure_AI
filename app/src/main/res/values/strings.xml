@@ -1,3 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Mind_Cure_AI</string>
+    
+    <!-- Chat Activity Strings -->
+    <string name="greeting_message">Hey Champ! 👋 How was your day?</string>
+    
+    <!-- Chat Options -->
+    <string-array name="chat_options">
+        <item>Had a good moment 😊</item>
+        <item>Had a tough time 😞</item>
+    </string-array>
 </resources>

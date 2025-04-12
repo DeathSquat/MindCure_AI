@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#D5E57BA1">
+    android:background="@color/bg_color">
 
     <!-- Header Section -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#D5E57BA1"
+        android:background="@color/bg_color"
         android:elevation="4dp"
         android:gravity="center"
         android:orientation="vertical"
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="Your Smart Health Assistant"
-            android:textColor="#4A90E2"
+            android:textColor="#FF6B6B"
             android:textSize="20sp"
             android:textStyle="bold" />
     </LinearLayout>

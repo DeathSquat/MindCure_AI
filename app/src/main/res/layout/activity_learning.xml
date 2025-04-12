@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@android:color/transparent"
-            app:titleTextColor="@color/primary_color"/>
+            app:titleTextColor="@color/primary_pink"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 

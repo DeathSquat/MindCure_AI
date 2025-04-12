@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@android:color/transparent"
-            app:titleTextColor="@color/primary_color"/>
+            app:titleTextColor="@color/primary_pink"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -51,7 +51,7 @@
                         android:text="Add New Goal"
                         android:textSize="18sp"
                         android:textStyle="bold"
-                        android:textColor="@color/primary_color"/>
+                        android:textColor="@color/primary_pink"/>
 
                     <EditText
                         android:id="@+id/etTitle"
@@ -80,8 +80,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:text="Save Goal"
-                        android:textColor="@android:color/white"
-                        android:backgroundTint="@color/primary_color"/>
+                        android:textColor="@color/primary_pink"
+                        android:backgroundTint="@color/primary_pink"/>
 
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -92,7 +92,7 @@
                 android:text="Your Goals"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="@color/primary_color"
+                android:textColor="@color/primary_pink"
                 android:layout_marginBottom="8dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -111,7 +111,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:src="@drawable/ic_add"
-        app:backgroundTint="@color/primary_color"
+        app:backgroundTint="@color/primary_pink"
         app:tint="@android:color/white"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout> 
